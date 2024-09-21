@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { kakaoSignIn } from 'apis/api';
-import { useDispatch } from 'react-redux';
-import { setLoginState, setUserProfile } from 'user-slice';
+// import { useDispatch } from 'react-redux';
+// import { setLoginState, setUserProfile } from 'user-slice';
 
 function Auth() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const getToken = async () => {
     const token = new URL(window.location.href).searchParams.get('code');
     const res = await kakaoSignIn({ code: token });
@@ -19,8 +19,8 @@ function Auth() {
         if (res === null) {
           navigate('/login');
         }
-        dispatch(setLoginState(true));
-        dispatch(setUserProfile(res));
+        // dispatch(setLoginState(true));
+        // dispatch(setUserProfile(res));
         if (res.nickname === null || res.profilepic_id === null) {
           window.location.href = '/set-profile';
         } else {

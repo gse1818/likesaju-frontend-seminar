@@ -4,11 +4,11 @@ import { TextField } from '../../../../components/textfield';
 import { Divider } from '../divider';
 import { KakaoButton } from '../kakao-button';
 import { signUp, checkDuplicateUser } from '../../../../apis/api';
-import { setLoginState, setUserProfile } from 'user-slice';
-import { useDispatch } from 'react-redux';
+// import { setLoginState, setUserProfile } from 'user-slice';
+// import { useDispatch } from 'react-redux';
 
 export const SignUpForm = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [formState, setFormState] = useState({
     id: '',
@@ -103,8 +103,8 @@ export const SignUpForm = () => {
       alert('회원가입에 실패했습니다.');
       return;
     }
-    dispatch(setLoginState(true));
-    dispatch(setUserProfile(resData));
+    // dispatch(setLoginState(true));
+    // dispatch(setUserProfile(resData));
     if (resData.nickname === null || resData.profilepic_id === null) {
       window.location.href = '/set-profile';
     } else {

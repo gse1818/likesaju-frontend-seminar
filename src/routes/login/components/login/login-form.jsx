@@ -4,14 +4,14 @@ import { TextField } from '../../../../components/textfield';
 import { Divider } from '../divider';
 import { KakaoButton } from '../kakao-button';
 import { signIn } from '../../../../apis/api';
-import { setLoginState, setUserProfile } from 'user-slice';
-import { useDispatch } from 'react-redux';
+// import { setLoginState, setUserProfile } from 'user-slice';
+// import { useDispatch } from 'react-redux';
 
 export const LoginForm = () => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleInputChange = useCallback(
     (setter) => (e) => {
@@ -28,8 +28,8 @@ export const LoginForm = () => {
         setError('*계정 정보를 확인해주세요.');
         return;
       }
-      dispatch(setLoginState(true));
-      dispatch(setUserProfile(res));
+      // dispatch(setLoginState(true));
+      // dispatch(setUserProfile(res));
       window.location.href =
         res.nickname === null || res.profilepic_id === null
           ? '/set-profile'

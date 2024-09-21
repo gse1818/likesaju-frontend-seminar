@@ -4,27 +4,27 @@ import { PointModal } from './modals/point-modal';
 import coin from '../assets/icons/coin.png';
 import { removeCookie } from '../utils/cookie';
 import { signOut } from '../apis/api';
-import { useSelector, useDispatch } from 'react-redux';
-import { setLoginState, setUserProfile } from 'user-slice';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { setLoginState, setUserProfile } from 'user-slice';
 import { ProfileImage } from '../components/profile-image';
 
 export const Header = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  // const [isLogin, setIsLogin] = useState(true);
   const location = useLocation();
 
   const [showProfile, setShowProfile] = useState(false);
   const [isPointModalOpen, setIsPointModalOpen] = useState(false);
 
-  const nickname = useSelector((state) => state.user.nickname);
-  const point = useSelector((state) => state.user.remaining_points);
-  const profileImgIndex = useSelector((state) => state.user.profilepic_id);
-  const loggedIn = useSelector((state) => state.user.isLogin);
+  // const nickname = useSelector((state) => state.user.nickname);
+  // const point = useSelector((state) => state.user.remaining_points);
+  // const profileImgIndex = useSelector((state) => state.user.profilepic_id);
+  // const loggedIn = useSelector((state) => state.user.isLogin);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    setIsLogin(loggedIn);
-  }, []);
+  // useEffect(() => {
+  //   setIsLogin(loggedIn);
+  // }, []);
 
   const linkStyle =
     'text-xl font-bold text-[#14142B] leading-6 hover:font-extrabold hover:text-[#4A3AFF] hover:cursor-pointer';
@@ -39,14 +39,14 @@ export const Header = () => {
     if (res !== null) {
       removeCookie('access_token');
       removeCookie('refresh_token');
-      dispatch(setLoginState(false));
-      dispatch(
-        setUserProfile({
-          nickname: null,
-          profilepic_id: null,
-          remaining_points: null,
-        }),
-      );
+      // dispatch(setLoginState(false));
+      // dispatch(
+      //   setUserProfile({
+      //     nickname: null,
+      //     profilepic_id: null,
+      //     remaining_points: null,
+      //   }),
+      // );
       window.location.href = '/';
     }
   };
@@ -76,7 +76,7 @@ export const Header = () => {
         >
           채팅
         </Link>
-        {isLogin ? (
+        {/* {isLogin ? (
           <div
             className="relative"
             onMouseOver={() => setShowProfile(true)}
@@ -125,14 +125,16 @@ export const Header = () => {
               </div>
             )}
           </div>
-        ) : (
-          <Link
-            to="login"
-            className="text-xl font-bold text-[#4A3AFF] leading-6 bg-[#F3F1FF] px-7 py-[17px] rounded-[50px]"
-          >
-            로그인
-          </Link>
-        )}
+        ) : 
+        ( */}
+        <Link
+          to="login"
+          className="text-xl font-bold text-[#4A3AFF] leading-6 bg-[#F3F1FF] px-7 py-[17px] rounded-[50px]"
+        >
+          로그인
+        </Link>
+        {/* )
+        } */}
       </div>
       {isPointModalOpen && <PointModal setIsModalOpen={setIsPointModalOpen} />}
     </div>

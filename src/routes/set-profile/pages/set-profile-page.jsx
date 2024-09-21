@@ -4,7 +4,7 @@ import { ProfileImageEdit } from '../components/profile-image-edit';
 import { TextField } from '../../../components/textfield';
 import { Button } from '../../../components/button';
 import { userInfoUpdate } from 'apis/api';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { setUserProfile } from 'user-slice';
 
 const SetProfilePage = () => {
@@ -12,7 +12,7 @@ const SetProfilePage = () => {
     return Math.floor(Math.random() * 6) + 1;
   };
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [profileImg, setProfileImg] = useState(getRandomNumber());
   const [nickname, setNickname] = useState('');
@@ -44,7 +44,7 @@ const SetProfilePage = () => {
     if (res === null) {
       setError('*닉네임 중복을 확인해주세요.');
     } else {
-      dispatch(setUserProfile(res));
+      // dispatch(setUserProfile(res));
       window.location.href = '/';
     }
   };
