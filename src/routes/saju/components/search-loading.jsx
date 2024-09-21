@@ -1,4 +1,4 @@
-import loadingImg from '../../../../assets/images/loading-temp.png';
+import loadingImg from '../../../assets/images/loading-temp.png';
 
 const SajuSearchLoading = () => {
   return (

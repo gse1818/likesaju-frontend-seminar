@@ -30,10 +30,10 @@ export const SajuSection = () => {
       <div className="w-full h-full flex flex-col gap-[80px]">
         <div className="w-full flex justify-between items-center">
           <div className="space-y-6">
-            <h3 className="text-left text-4xl font-extrabold text-neutral-800">
+            <h3 className="text-left text-4xl nanum-extra-bold text-neutral-800">
               AI가 알려주는 사주
             </h3>
-            <p className="text-xl font-bold text-neutral-800">
+            <p className="text-xl font-semibold text-neutral-800">
               오늘의 사주 운세를 확인해보세요.
             </p>
           </div>
@@ -44,7 +44,7 @@ export const SajuSection = () => {
           </a>
         </div>
         <div className="space-y-10">
-          <p className="font-medium text-xl">어떤 내용을 확인할 수 있나요?</p>
+          <p className="text-xl text-neutral-800 font-semibold">어떤 내용을 확인할 수 있나요?</p>
           <div className="grid grid-cols-2 gap-[30px]">
             {sajuCardInfo.map((card) => (
               <SajuCard

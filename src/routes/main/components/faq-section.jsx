@@ -24,7 +24,7 @@ export const FAQSection = () => {
   return (
     <SectionLayout>
       <div className="w-full h-full flex flex-col gap-[80px]">
-        <h3 className="text-left text-4xl font-extrabold">FAQs</h3>
+        <h3 className="text-left text-4xl nanum-extra-bold">FAQs</h3>
         <div className="flex flex-col gap-[30px] justify-center">
           {faqAccordionInfo.map((accordion) => (
             <FAQAccordion

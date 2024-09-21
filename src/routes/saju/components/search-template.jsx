@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SajuLion } from './saju-lion';
 import { SajuSearchContainer } from './search-container';
 
 const SajuSearch = () => {
   return (
-    <div className="flex flex-row gap-5 items-end">
+    <div className="flex flex-row gap-4 justify-center items-center pb-20">
       <SajuLion />
       <SajuSearchContainer />
     </div>

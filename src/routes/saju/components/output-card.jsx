@@ -4,7 +4,7 @@ import { OutputCardFront } from './output-card-front';
 
 export const OutputCard = ({ data, isUnlocked }) => {
   const [isFlipped, setIsFlipped] = useState(false);
-  console.log(isUnlocked, "isunloickedadsf")
+  console.log(isUnlocked, 'isunloickedadsf');
 
   const flipCard = () => {
     setIsFlipped(!isFlipped);

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { OutputCard } from './output-card';
-import { Button } from '../../../../components/button';
+import { Button } from '../../../components/button';
 import { OutputCardBack } from './output-card-back';
-import { SajuPurchaseModal } from '../../../../components/modals/saju-purchase-modal';
-import { SajuShareModal } from '../../../../components/modals/share-modal';
-import locked from '../../../../assets/images/locked.png';
+import { SajuPurchaseModal } from '../../../components/modals/saju-purchase-modal';
+import { SajuShareModal } from '../../../components/modals/share-modal';
+import locked from '../../../assets/images/locked.png';
 
 export const SearchOutputTheme = () => {
   const OutputCardData = [
@@ -47,19 +47,19 @@ export const SearchOutputTheme = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center p-[80px] gap-[80px]">
-      <h1 className="text-[40px] font-extrabold leading-[48px] nanum-extra-bold">
+    <div className="flex flex-col justify-center items-center p-20 gap-20">
+      <h1 className="text-[40px] font-extrabold leading-[48px] nanum-extra-bold mt-2">
         테마별 운세 보기
       </h1>
       {isUnlocked ? (
-        <div className="relative w-fit grid grid-cols-2 gap-[30px] p-4 justify-items-center">
+        <div className="relative w-fit grid grid-cols-2 gap-16 p-4 justify-items-center">
           {OutputCardData.map((data, index) => (
             <OutputCard key={index} data={data} isUnlocked={isUnlocked} />
           ))}
         </div>
       ) : (
         <div className="relative" onClick={openPurchaseModal}>
-          <div className="relative w-fit grid grid-cols-2 gap-[30px] p-4 justify-items-center">
+          <div className="relative w-fit grid grid-cols-2 gap-16 p-4 justify-items-center">
             {OutputCardData.map((data, index) => (
               <div className={'relative w-[500px] h-[370px] cursor-pointer'}>
                 <OutputCardBack
@@ -75,10 +75,10 @@ export const SearchOutputTheme = () => {
             alt="locked"
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[228px] h-[228px]"
           />
-          {isPurchaseModalOpen && (
-            <SajuPurchaseModal setIsModalOpen={setIsPurchaseModalOpen} />
-          )}
         </div>
+      )}
+      {isPurchaseModalOpen && (
+        <SajuPurchaseModal setIsModalOpen={setIsPurchaseModalOpen} />
       )}
       {isUnlocked && (
         <>

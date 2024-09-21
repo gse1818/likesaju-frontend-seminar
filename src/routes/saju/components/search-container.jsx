@@ -15,7 +15,7 @@ export const SajuSearchContainer = () => {
   }
 
   return (
-    <div className="flex w-[800px] bg-white rounded-2xl shadow-lg flex-col justify-start items-start">
+    <div className="flex w-[800px] h-[670px] bg-white rounded-2xl shadow-lg flex-col justify-start items-start">
       {step === 0 && <SajuSearchInput onSubmit={onSubmit} />}
       {step === 1 && <SajuSearchLoading />}
       {step === 2 && <SajuSearchOutput outputs={tempOutputs} />}
