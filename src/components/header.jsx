@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { PointModal } from './modals/point-modal';
 import coin from '../assets/icons/coin.png';
-import { removeCookie } from '../utils/cookie';
+import { removeCookie, getCookie } from '../utils/cookie';
 import { signOut } from '../apis/api';
 // import { useSelector, useDispatch } from 'react-redux';
 // import { setLoginState, setUserProfile } from 'user-slice';
 import { ProfileImage } from '../components/profile-image';
 
 export const Header = () => {
-  // const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
   const location = useLocation();
 
   const [showProfile, setShowProfile] = useState(false);
@@ -33,6 +33,15 @@ export const Header = () => {
   const onClickPoint = () => {
     setIsPointModalOpen(true);
   };
+
+  useEffect(() => {
+    const token = getCookie('access_token');
+    if (token) {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+    }
+  }, []);
 
   const onClickLogout = async () => {
     const res = await signOut();
@@ -127,12 +136,23 @@ export const Header = () => {
           </div>
         ) : 
         ( */}
-        <Link
-          to="login"
-          className="text-xl font-bold text-[#4A3AFF] leading-6 bg-[#F3F1FF] px-7 py-[17px] rounded-[50px]"
-        >
-          로그인
-        </Link>
+        {isLogin ? (
+          <div>
+            <Link
+              onClick={onClickLogout}
+              className="text-xl font-bold text-[#4A3AFF] leading-6 bg-[#F3F1FF] px-7 py-[17px] rounded-[50px]"
+            >
+              로그아웃
+            </Link>
+          </div>
+        ) : (
+          <Link
+            to="login"
+            className="text-xl font-bold text-[#4A3AFF] leading-6 bg-[#F3F1FF] px-7 py-[17px] rounded-[50px]"
+          >
+            로그인
+          </Link>
+        )}
         {/* )
         } */}
       </div>
