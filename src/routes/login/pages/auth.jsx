@@ -6,13 +6,23 @@ function Auth() {
   const navigate = useNavigate();
 
   const getToken = async () => {
-    //
+    const token = new URL(window.location.href).searchParams.get('code');
+    console.log(token);
+    const res = await kakaoSignIn({ code: token });
+    return res;
   };
 
   useEffect(() => {
     getToken()
       .then((res) => {
-        //
+        if (res === null) {
+          navigate('/login');
+        }
+        if (res.nickname === null || res.profilepic_id === null) {
+          window.location.href = '/set-profile';
+        } else {
+          window.location.href = '/';
+        }
       })
       .catch((err) => console.log(err));
   });
