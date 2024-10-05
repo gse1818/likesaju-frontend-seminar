@@ -123,3 +123,32 @@ export const paymentReady = async ({ point, price }) => {
       console.error(e)
   }
 }
+
+// 카카오페이 결제 승인 api
+export const paymentApprove = async (tid, pg_token) => {
+  try {
+      const res = await instanceWithToken.post("/payment/approve/", {
+          "pg_token": pg_token,
+          "tid": tid,
+          "cid": process.env.REACT_APP_KAKAO_PAY_CID
+      });
+      return res;
+  } catch (e) {
+      console.error(e);
+  }
+}
+
+// 사용자의 포인트를 감소하는 api
+export const reducePoint = async (point) => {
+  try {
+    const response = await instanceWithToken.put('/user/pointreduce/', {
+      "point_to_deduct": point,
+    });
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+};

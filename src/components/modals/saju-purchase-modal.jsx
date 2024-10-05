@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { setLockState, setUserProfile } from '../.././redux/user-slice';
 import React from "react";
+import { reducePoint } from 'apis/api';
 
 const MsgComponent = ({ point }) => {
     return (
@@ -20,9 +21,15 @@ const BtnsComponent = ({ point, setIsModalOpen, setIsPointModalOpen }) => {
       setIsModalOpen(false);
     };
   
-      const onClickUse = () => {
-          alert("사용");
-      };
+    const onClickUse = async () => {
+        const response = await reducePoint(5);
+        console.log(response);
+        if (response) {
+          dispatch(setLockState(false));
+          dispatch(setUserProfile({ ...data, remaining_points: response.remaining_points }));
+          setIsModalOpen(false);
+        }
+    }
       
     const onClickMove = () => {
       setIsModalOpen(false);
