@@ -88,3 +88,38 @@ export const checkDuplicateUser = async (data) => {
     return null;
   }
 };
+
+// 포인트 목록을 불러오는 api
+export const getPointList = async () => {
+  try {
+    const response = await instance.get('/point/');
+    if (response.status === 200) {
+      console.log(response.data);
+      return response.data;
+    }
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+};
+
+// 카카오페이 준비 api
+export const paymentReady = async ({ point, price }) => {
+  try {
+      const res = await instanceWithToken.post("/payment/ready/", {
+          "cid": process.env.REACT_APP_KAKAO_PAY_CID,
+          "partner_order_id": "POID1234",
+          "partner_user_id": "PUID1234",
+          "item_name": point.toString(),
+          "quantity": 1,
+          "total_amount": parseInt(price.replaceAll(",", "")),
+          "tax_free_amount": 0,
+          "approval_url":"http://localhost:3000/approval",
+          "cancel_url":"http://localhost:3000/cancel",
+          "fail_url":"http://localhost:3000/fail"
+      });
+      return res;
+  } catch (e) {
+      console.error(e)
+  }
+}
