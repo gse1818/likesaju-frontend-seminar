@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import ApprovalPage from 'routes/pay/pages/approval-page';
 import CancelPage from 'routes/pay/pages/cancel-page';
 import FailPage from 'routes/pay/pages/fail-page';
+import HistoryPage from 'routes/pay/pages/history-page';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               <Route path="/approval" element={<ApprovalPage />} />
               <Route path="/cancel" element={<CancelPage />} />
               <Route path="/fail" element={<FailPage />} />
+              <Route path="/history" element={<HistoryPage />} />
             </Routes>
           </div>
         </div>
