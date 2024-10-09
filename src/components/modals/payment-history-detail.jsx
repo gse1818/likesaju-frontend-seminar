@@ -3,7 +3,7 @@ import styles from './modal.module.scss';
 
 export const PaymentHistoryDetailModal = ({ history, close }) => {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black bg-opacity-50 top-0 left-0">
       <div
         className={`w-[532px] bg-white rounded-[18px] shadow-md px-[30px] py-5 ${styles.float}`}
       >
