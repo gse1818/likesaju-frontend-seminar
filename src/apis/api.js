@@ -153,3 +153,17 @@ export const reducePoint = async (point) => {
     return null;
   }
 };
+
+export const getPaymentHistory = async () => {
+  try {
+    const res = await instanceWithToken.get('/payment/history/');
+    if (res.status === 200) {
+      return res.data;
+    } else {
+      return []; 
+    }
+  } catch (e) {
+    console.error('Error fetching payment history:', e);
+    return [];
+  }
+};
