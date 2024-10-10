@@ -38,7 +38,6 @@ export const SearchOutputTheme = () => {
   ];
 
   const data = useSelector((data) => data);
-  const [isUnlocked, setIsUnlocked] = useState(false);
   const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isPointModalOpen, setIsPointModalOpen] = useState(false);
