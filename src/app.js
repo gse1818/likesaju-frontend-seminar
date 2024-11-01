@@ -9,6 +9,9 @@ import SetProfilePage from './routes/set-profile/pages/set-profile-page';
 import Auth from './routes/login/pages/auth';
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import ApprovalPage from 'routes/pages/approval-page';
+import CancelPage from 'routes/pages/cancel-page';
+import FailPage from 'routes/pages/fail-page';
 
 function App() {
   return (
@@ -27,6 +30,9 @@ function App() {
               />
               <Route path="/set-profile" element={<SetProfilePage />} />
               <Route path="/auth" element={<Auth />} />
+              <Route path="/approval" element={<ApprovalPage />} />
+              <Route path="/cancel" element={<CancelPage />} />
+              <Route path="/fail" element={<FailPage />} />
             </Routes>
           </div>
         </div>
