@@ -152,3 +152,56 @@ export const reducePoint = async (point) => {
     return null;
   }
 };
+
+//서비스를 이용중인 유저 리스트를 가져오는 api
+export const getUserList = async () => {
+  try {
+    const response = await instanceWithToken.get('/user/userinfo/');
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+//새로운 채팅방을 생성하는 api
+export const createChatRoom = async (userId) => {
+  try {
+    const response = await instanceWithToken.post('/chatrooms/', {
+      user_id: userId,
+    });
+    if (response.status === 201) {
+      return response.data;
+    }
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+//유저가 소속된 채팅방 리스트를 가져오는 api
+export const getChatRoomList = async () => {
+  try {
+    const response = await instanceWithToken.get('/chatrooms/');
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+//유저가 선택한 채팅방의 메시지 리스트를 가져오는 api
+export const getMessageList = async (chatRoomId) => {
+  try {
+    const response = await instanceWithToken.get(
+      `/messages/?chat_room_id=${chatRoomId}`,
+    );
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (e) {
+    console.error(e);
+  }
+};
+

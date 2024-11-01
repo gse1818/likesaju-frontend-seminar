@@ -42,6 +42,7 @@ export const Header = () => {
       dispatch(setLoginState(false));
       dispatch(
         setUserProfile({
+          user: null,
           nickname: null,
           profilepic_id: null,
           remaining_points: null,
