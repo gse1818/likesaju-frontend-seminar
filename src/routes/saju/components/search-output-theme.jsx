@@ -8,7 +8,6 @@ import locked from '../../../assets/images/locked.png';
 import { useSelector } from 'react-redux';
 import { PointModal } from 'components/modals/point-modal';
 
-
 export const SearchOutputTheme = () => {
   const OutputCardData = [
     {
@@ -43,7 +42,6 @@ export const SearchOutputTheme = () => {
 	const [isPointModalOpen, setIsPointModalOpen] = useState(false);
 	const isLocked = data.user.isLocked;
 
-
   const openPurchaseModal = () => {
     setIsPurchaseModalOpen(true);
   };
@@ -58,29 +56,48 @@ export const SearchOutputTheme = () => {
         테마별 운세 보기
       </h1>
       {isLocked ? (
-	        <div className="relative" onClick={openPurchaseModal}>
-	          <div className="relative w-fit grid grid-cols-2 gap-16 p-4 justify-items-center">
-	            {OutputCardData.map((data, index) => (
-	              <div className={'relative w-[500px] h-[370px] cursor-pointer'}>
-	                <OutputCardBack key={index} data={data} isLocked={isLocked} />
-	              </div>
-	            ))}
-	          </div>
-	          <img
-	            src={locked}
-	            alt="locked"
-	            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[228px] h-[228px] cursor-pointer"
-	          />
-	        </div>
-	      ) : (
-	        <div className="relative w-fit grid grid-cols-2 gap-16 p-4 justify-items-center">
-	          {OutputCardData.map((data, index) => (
-	            <OutputCard key={index} data={data} isLocked={isLocked} />
-	          ))}
-	        </div>
-	      )}
+        <div className="relative" onClick={openPurchaseModal}>
+          <div className="relative w-fit grid grid-cols-2 gap-16 p-4 justify-items-center">
+            {OutputCardData.map((data, index) => (
+              <div className={'relative w-[500px] h-[370px] cursor-pointer'}>
+                <OutputCardBack key={index} data={data} isLocked={isLocked} />
+              </div>
+            ))}
+          </div>
+          <img
+            src={locked}
+            alt="locked"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[228px] h-[228px] cursor-pointer"
+          />
+        </div>
+      ) : (
+        <div className="relative w-fit grid grid-cols-2 gap-16 p-4 justify-items-center">
+          {OutputCardData.map((data, index) => (
+            <OutputCard key={index} data={data} isLocked={isLocked} />
+          ))}
+        </div>
+      )}
       {isPurchaseModalOpen && (
-        <SajuPurchaseModal setIsModalOpen={setIsPurchaseModalOpen} setIsPointModalOpen={setIsPointModalOpen} />
+        <SajuPurchaseModal
+          setIsModalOpen={setIsPurchaseModalOpen}
+          setIsPointModalOpen={setIsPointModalOpen}
+        />
+      )}
+      {isPointModalOpen && <PointModal setIsModalOpen={setIsPointModalOpen} />}
+      {!isLocked && (
+        <>
+          <Button
+            className={
+              'bg-primary-500 text-white font-bold rounded-[10px] mt-4'
+            }
+            onButtonClick={openShareModal}
+          >
+            오늘 운세 공유하기
+          </Button>
+          {isShareModalOpen && (
+            <SajuShareModal setIsModalOpen={setIsShareModalOpen} />
+          )}
+        </>
       )}
       {isPointModalOpen && <PointModal setIsModalOpen={setIsPointModalOpen} />}
 	      {!isLocked && (

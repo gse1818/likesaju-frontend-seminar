@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"; // 수정
-import { getPointList } from "apis/api"; // 추가
+import React, { useEffect, useState } from "react";
+import { getPointList } from "apis/api";
 import coin from 'assets/icons/coin.png';
 import { paymentReady } from "apis/api";
 
@@ -54,5 +54,7 @@ export const PointModal = ({ setIsModalOpen }) => {
                 </div>
             </div>
         </div>
-    )
+      </div>
+    </div>
+  );
 };

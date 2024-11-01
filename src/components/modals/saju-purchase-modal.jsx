@@ -1,6 +1,6 @@
+import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { setLockState, setUserProfile } from '../.././redux/user-slice';
-import React from "react";
 import { reducePoint } from 'apis/api';
 
 const MsgComponent = ({ point }) => {
@@ -36,19 +36,41 @@ const BtnsComponent = ({ point, setIsModalOpen, setIsPointModalOpen }) => {
       setIsPointModalOpen(true);
     };
 
-    return (
-        <div className="flex flex-row items-center justify-center mt-10">
-            {point >= 5 ?
-                <div className="flex flex-row items-center justify-center gap-5">
-                    <button onClick={onClickCancel} className="w-[215px] h-[58px] px-10 py-[13px] bg-white border-[#E3E5F2] border-2 text-[#170F49] rounded-xl font-bold text-lg tracking-tighter">취소</button>
-                    <button onClick={onClickUse} className="w-[215px] h-[58px] px-10 py-[13px] bg-[#4A3AFF] text-white rounded-xl font-bold text-lg tracking-tighter">사용</button>
-                </div>
-            : <div className="flex flex-row items-center justify-center gap-5">
-                <button onClick={onClickCancel} className="w-[215px] h-[58px] px-10 py-[13px] bg-white border-[#E3E5F2] border-2 text-[#170F49] rounded-xl font-bold text-lg tracking-tighter">취소</button>
-                <button onClick={onClickMove} className="w-[215px] h-[58px] px-10 py-[13px] bg-[#4A3AFF] text-white rounded-xl font-bold text-lg tracking-tighter">이동</button>
-            </div>}
+  return (
+    <div className="flex flex-row items-center justify-center mt-10">
+      {point >= 5 ? (
+        <div className="flex flex-row items-center justify-center gap-5">
+          <button
+            onClick={onClickCancel}
+            className="w-[215px] h-[58px] px-10 py-[13px] bg-white border-[#E3E5F2] border-2 text-[#170F49] rounded-xl font-bold text-lg tracking-tighter"
+          >
+            취소
+          </button>
+          <button
+            onClick={onClickUse}
+            className="w-[215px] h-[58px] px-10 py-[13px] bg-[#4A3AFF] text-white rounded-xl font-bold text-lg tracking-tighter"
+          >
+            사용
+          </button>
         </div>
-    )
+      ) : (
+        <div className="flex flex-row items-center justify-center gap-5">
+          <button
+            onClick={onClickCancel}
+            className="w-[215px] h-[58px] px-10 py-[13px] bg-white border-[#E3E5F2] border-2 text-[#170F49] rounded-xl font-bold text-lg tracking-tighter"
+          >
+            취소
+          </button>
+          <button
+            onClick={onClickMove}
+            className="w-[215px] h-[58px] px-10 py-[13px] bg-[#4A3AFF] text-white rounded-xl font-bold text-lg tracking-tighter"
+          >
+            이동
+          </button>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export const SajuPurchaseModal = ({ setIsModalOpen, setIsPointModalOpen }) => {
@@ -69,5 +91,7 @@ export const SajuPurchaseModal = ({ setIsModalOpen, setIsPointModalOpen }) => {
                 </div>
             </div>
         </div>
-    )
+      </div>
+    </div>
+  );
 };
