@@ -1,4 +1,3 @@
-// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 
 const colors = require('tailwindcss/colors');
@@ -34,9 +33,16 @@ module.exports = {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+        // 새로운 애니메이션 추가
+        fadeLeft: {
+          '0%': { transform: 'translateX(-100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
       },
       animation: {
         fadeIn: 'fadeIn 0.5s ease-in-out',
+        // fade-left 애니메이션 추가
+        'fade-left': 'fadeLeft 1s ease-out forwards',
       },
     },
     fontFamily: {
