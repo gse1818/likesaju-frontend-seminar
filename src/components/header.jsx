@@ -53,14 +53,14 @@ export const Header = () => {
   };
 
   return (
-    <div className="sticky top-0 w-full flex flex-row items-center justify-between bg-white drop-shadow h-[80px] px-[68px] z-[999]">
+    <div className="sticky top-0 w-full flex flex-row items-center justify-between bg-white drop-shadow h-[80px] px-[30px] sm:px-[68px] z-[999]">
       <Link
         to="/"
-        className="text-[26px] font-extrabold text-[#14142B] leading-9 tracking-tighter"
+        className="text-[20px] sm:text-[26px] font-extrabold text-[#14142B] leading-9 tracking-tighter"
       >
         멋쟁이 사주처럼
       </Link>
-      <div className="flex flex-row items-center gap-[50px]">
+      <div className="flex flex-row items-center gap-[25px] sm:gap-[50px]">
         <Link
           to="/saju"
           className={

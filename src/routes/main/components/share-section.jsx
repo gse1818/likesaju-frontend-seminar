@@ -18,9 +18,9 @@ export const ShareSection = () => {
   return (
     <SectionLayout>
       <div className="w-full h-full flex flex-col gap-[80px]">
-        <div className="w-full flex justify-between items-center">
+        <div className="w-full block sm:flex justify-between items-center">
           <div className="space-y-6">
-            <h3 className="text-left text-4xl nanum-extra-bold text-neutral-800">
+            <h3 className="text-center sm:text-left text-4xl nanum-extra-bold text-neutral-800">
               사주 공유하기
             </h3>
             <p className="text-xl font-bold text-neutral-800">
@@ -28,7 +28,7 @@ export const ShareSection = () => {
             </p>
           </div>
           <a href="/chat">
-            <Button className="w-[250px] h-[50px]" isRounded={true}>
+            <Button className="w-[250px] h-[50px] mt-5 sm:mt-0" isRounded={true}>
               1:1 채팅 하러가기
             </Button>
           </a>

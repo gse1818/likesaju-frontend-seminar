@@ -43,9 +43,9 @@ const FAQAccordion = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex flex-col rounded-xl px-[50px] py-10 shadow-2xl w-full gap-5">
+    <div className="flex flex-col rounded-xl px-[45px] sm:px-[50px] py-10 shadow-2xl w-full gap-5">
       <div className="flex justify-between items-center gap-5">
-        <p className="text-xl font-bold truncate">{question}</p>
+        <p className="text-lg sm:text-xl font-bold truncate">{question}</p>
         <button
           className="rounded-full shadow-md transition border border-[#D3D3D3]"
           onClick={() => {

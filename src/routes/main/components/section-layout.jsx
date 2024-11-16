@@ -12,7 +12,7 @@ export const SectionLayout = ({
   );
 
   const innerLayerClassName = cn(
-    'relative px-[20vw] w-full flex justify-between items-center items-center', // 추가!
+    'relative px-[10vw] sm:px-[20vw] w-full flex justify-between items-center items-center', // 추가!
     _innerLayerClassName,
   );
 
