@@ -10,6 +10,7 @@ import { ProfileImage } from '../components/profile-image';
 
 export const Header = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   const [showProfile, setShowProfile] = useState(false);
@@ -53,14 +54,17 @@ export const Header = () => {
   };
 
   return (
-    <div className="w-full flex flex-row items-center justify-between bg-white drop-shadow h-[80px] px-[68px] z-[999]">
+    <div className="w-full bg-white drop-shadow h-[80px] px-4 sm:px-[68px] z-[999] flex items-center justify-between">
+      {/* 제목 */}
       <Link
         to="/"
         className="text-[26px] font-extrabold text-[#14142B] leading-9 tracking-tighter"
       >
         멋쟁이 사주처럼
       </Link>
-      <div className="flex flex-row items-center gap-[50px]">
+
+      {/* 데스크톱용 메뉴 */}
+      <div className="hidden sm:flex flex-row items-center gap-[50px]">
         <Link
           to="/saju"
           className={
@@ -135,6 +139,50 @@ export const Header = () => {
           </Link>
         )}
       </div>
+
+      {/* 모바일 햄버거 메뉴 */}
+      <div className="flex sm:hidden">
+        <button
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          className="text-3xl focus:outline-none"
+        >
+          ☰
+        </button>
+      </div>
+
+      {/* 모바일 메뉴 슬라이드 */}
+      {isMobileMenuOpen && (
+        <div className="fixed top-0 right-0 w-3/4 h-screen bg-white shadow-lg z-[1000] flex flex-col gap-4 p-5">
+          <button
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="text-2xl self-end mb-5"
+          >
+            ✕
+          </button>
+          <Link to="/saju" className={
+            location.pathname === '/saju' ? activeLinkStyle : linkStyle
+          }>
+            사주
+          </Link>
+          <Link to="/chat" className={
+            location.pathname === '/chat' ? activeLinkStyle : linkStyle
+          }>
+            채팅
+          </Link>
+          {isLogin ? (
+            <>
+              <span onClick={onClickLogout} className="text-base font-normal underline text-[#160F49] self-start cursor-pointer">
+                로그아웃
+              </span>
+            </>
+          ) : (
+            <Link to="login" className="text-xl font-bold text-[#4A3AFF] leading-6 bg-[#F3F1FF] px-7 py-[17px] rounded-[50px]">
+              로그인
+            </Link>
+          )}
+        </div>
+      )}
+
       {isPointModalOpen && <PointModal setIsModalOpen={setIsPointModalOpen} />}
     </div>
   );

@@ -35,6 +35,9 @@ module.exports = {
       animation: {
         fadeIn: 'fadeIn 0.5s ease-in-out',
       },
+      screens: {
+        mobile: { max: '1024px' },
+      },
     },
     fontFamily: {
       PretendardRegular: ['Pretendard-Regular'],

@@ -6,12 +6,12 @@ export const SectionLayout = ({
   innerLayerClassName: _innerLayerClassName,
 }) => {
   const outerLayerClassName = cn(
-    'flex items-center justify-start w-screen h-screen border-b',
+    'flex items-center justify-start w-screen h-full border-b my-7',
     _outerLayerClassName,
   );
 
   const innerLayerClassName = cn(
-    'relative px-[20vw] w-full flex justify-between',
+    'relative px-[20vw] w-full h-full flex justify-between',
     _innerLayerClassName,
   );
 

@@ -23,9 +23,9 @@ export const FAQSection = () => {
 
   return (
     <SectionLayout>
-      <div className="w-full h-full flex flex-col gap-[80px]">
-        <h3 className="text-left text-4xl nanum-extra-bold">FAQs</h3>
-        <div className="flex flex-col gap-[30px] justify-center">
+      <div className="w-full h-full flex flex-col gap-[40px] mobile:gap-6">
+        <h3 className="text-left text-4xl mobile:text-2xl nanum-extra-bold">FAQs</h3>
+        <div className="flex flex-col gap-[30px] mobile:gap-4 justify-center">
           {faqAccordionInfo.map((accordion) => (
             <FAQAccordion
               key={accordion.question}
@@ -43,11 +43,11 @@ const FAQAccordion = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex flex-col rounded-xl px-[50px] py-10 shadow-2xl w-full gap-5">
+    <div className="flex flex-col rounded-xl px-[50px] py-10 shadow-2xl w-full gap-5 mobile:px-4 mobile:py-6">
       <div className="flex justify-between items-center gap-5">
-        <p className="text-xl font-bold truncate">{question}</p>
+        <p className="text-xl font-bold truncate mobile:text-base">{question}</p>
         <button
-          className="rounded-full shadow-lg transition"
+          className="rounded-full shadow-lg transition mobile:w-8 mobile:h-8"
           onClick={() => {
             setIsOpen(!isOpen);
           }}
@@ -55,8 +55,8 @@ const FAQAccordion = ({ question, answer }) => {
           <svg
             className={`transition transform ${isOpen ? '' : '-rotate-90'}`}
             xmlns="http://www.w3.org/2000/svg"
-            width="51"
-            height="51"
+            width="40"
+            height="40"
             viewBox="0 0 51 51"
             fill="none"
           >
@@ -78,7 +78,7 @@ const FAQAccordion = ({ question, answer }) => {
           </svg>
         </button>
       </div>
-      {isOpen && <p className="text-lg w-full text-left">{answer}</p>}
+      {isOpen && <p className="text-lg w-full text-left mobile:text-sm">{answer}</p>}
     </div>
   );
 };
