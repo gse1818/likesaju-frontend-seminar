@@ -6,7 +6,7 @@ import { removeCookie } from '../utils/cookie';
 import { signOut } from '../apis/api';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLoginState, setUserProfile } from '../redux/user-slice';
-import { ProfileImage } from '../components/profile-image';
+import { ProfileImage } from './profile-image';
 
 export const Header = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -53,7 +53,7 @@ export const Header = () => {
   };
 
   return (
-    <div className="w-full flex flex-row items-center justify-between bg-white drop-shadow h-[80px] px-[68px] z-[999]">
+    <div className="sticky top-0 w-full flex flex-row items-center justify-between bg-white drop-shadow h-[80px] px-[68px] z-[999]">
       <Link
         to="/"
         className="text-[26px] font-extrabold text-[#14142B] leading-9 tracking-tighter"
