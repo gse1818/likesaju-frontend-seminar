@@ -5,7 +5,8 @@ export const MainSection = () => {
   return (
     <SectionLayout>
       <div className="flex flex-col w-full gap-8 items-start">
-        <h1 className="text-[64px] leading-normal whitespace-pre-wrap text-left nanum-extra-bold text-black dark:text-white">
+        {/* 애니메이션 적용된 텍스트 */}
+        <h1 className="text-[64px] leading-normal whitespace-pre-wrap text-left nanum-extra-bold text-black dark:text-white animate-slide-in">
           <span>멋쟁이</span> <s className="text-gray-500">사자</s>
           {'\n'}
           <span>사주처럼</span>

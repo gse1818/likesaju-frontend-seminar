@@ -53,27 +53,33 @@ export const Header = () => {
   };
 
   return (
-    <div className="w-full flex flex-row items-center justify-between bg-white drop-shadow h-[80px] px-[68px] z-[999]">
+    <div className="w-full flex flex-row items-center justify-between bg-white drop-shadow h-[80px] px-4 md:px-[68px] z-[999]">
+      {/* 로고 */}
       <Link
         to="/"
-        className="text-[26px] font-extrabold text-[#14142B] leading-9 tracking-tighter"
+        className="text-[26px] font-extrabold text-[#14142B] leading-9 tracking-tighter sm:text-[20px] sm:leading-none"
       >
         멋쟁이 사주처럼
       </Link>
-      <div className="flex flex-row items-center gap-[50px]">
+      {/* 네비게이션 */}
+      <div className="flex flex-row items-center gap-[50px] sm:gap-4">
         <Link
           to="/saju"
-          className={
-            location.pathname === '/saju' ? activeLinkStyle : linkStyle
-          }
+          className={`text-xl font-bold leading-6 sm:text-sm sm:leading-none ${
+            location.pathname === '/saju'
+              ? 'text-[#4A3AFF] font-extrabold'
+              : 'text-[#14142B] hover:text-[#4A3AFF]'
+          }`}
         >
           사주
         </Link>
         <Link
           to="/chat"
-          className={
-            location.pathname === '/chat' ? activeLinkStyle : linkStyle
-          }
+          className={`text-xl font-bold leading-6 sm:text-sm sm:leading-none ${
+            location.pathname === '/chat'
+              ? 'text-[#4A3AFF] font-extrabold'
+              : 'text-[#14142B] hover:text-[#4A3AFF]'
+          }`}
         >
           채팅
         </Link>
@@ -83,43 +89,47 @@ export const Header = () => {
             onMouseOver={() => setShowProfile(true)}
             onMouseLeave={() => setShowProfile(false)}
           >
-            <span className="text-xl font-bold text-[#14142B] leading-6 hover:font-extrabold hover:text-[#4A3AFF] hover:cursor-pointer">
+            <span className="text-xl font-bold leading-6 text-[#14142B] hover:text-[#4A3AFF] sm:text-sm sm:leading-none">
               프로필
             </span>
             {showProfile && (
-              <div className="absolute top-[25px] right-[-25px] bg-white drop-shadow w-[221px] p-[25px] rounded-[12px] flex flex-col gap-5">
+              <div className="absolute top-[25px] right-0 bg-white drop-shadow w-[180px] md:w-[221px] p-4 md:p-[25px] rounded-[12px] flex flex-col gap-4 md:gap-5">
                 {profileImgIndex && (
-                  <div className="flex flex-row gap-[10px] items-center justify-start">
+                  <div className="flex flex-row gap-[10px] items-center">
                     <ProfileImage
                       profileImageId={profileImgIndex}
                       additionalClassName={'w-[30px] h-[30px]'}
                     />
-                    <span className="text-lg font-bold text-[#170F49] leading-6">
+                    <span className="text-sm md:text-lg font-bold text-[#170F49]">
                       {nickname}
                     </span>
                   </div>
                 )}
                 <div className="flex flex-row items-center justify-between">
                   <div className="flex flex-row gap-[10px] items-center">
-                    <img src={coin} alt="coin" className="w-[30px] h-[30px]" />
-                    <span className="text-lg font-bold text-[#170F49] leading-6">
+                    <img
+                      src={coin}
+                      alt="coin"
+                      className="w-[20px] md:w-[30px]"
+                    />
+                    <span className="text-sm md:text-lg font-bold text-[#170F49]">
                       포인트
                     </span>
                   </div>
-                  <span className="text-lg font-bold text-[#4A3AFF] leading-6">
+                  <span className="text-sm md:text-lg font-bold text-[#4A3AFF]">
                     {point}
                     <span className="text-[#160F49]">P</span>
                   </span>
                 </div>
                 <button
                   onClick={onClickPoint}
-                  className="bg-[#160F49] text-white text-bases font-semibold leading-6 rounded-[50px] px-6 py-[6px]"
+                  className="bg-[#160F49] text-white text-sm md:text-base font-semibold rounded-[50px] px-4 md:px-6 py-[6px]"
                 >
                   충전하기
                 </button>
                 <span
                   onClick={onClickLogout}
-                  className="text-base font-normal underline text-[#160F49] self-start cursor-pointer"
+                  className="text-sm md:text-base font-normal underline text-[#160F49] cursor-pointer"
                 >
                   로그아웃
                 </span>
@@ -128,8 +138,8 @@ export const Header = () => {
           </div>
         ) : (
           <Link
-            to="login"
-            className="text-xl font-bold text-[#4A3AFF] leading-6 bg-[#F3F1FF] px-7 py-[17px] rounded-[50px]"
+            to="/login"
+            className="text-xl font-bold text-[#4A3AFF] bg-[#F3F1FF] px-7 py-[17px] rounded-[50px] sm:text-sm sm:leading-none sm:px-5 sm:py-[10px]"
           >
             로그인
           </Link>
