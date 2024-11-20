@@ -23,9 +23,9 @@ export const FAQSection = () => {
 
   return (
     <SectionLayout>
-      <div className="w-full h-full flex flex-col gap-[80px]">
-        <h3 className="text-left text-4xl nanum-extra-bold">FAQs</h3>
-        <div className="flex flex-col gap-[30px] justify-center">
+      <div className="w-full h-full flex flex-col gap-10 sm:gap-16">
+        <h3 className="text-left text-2xl sm:text-3xl font-extrabold">FAQs</h3>
+        <div className="flex flex-col gap-6 sm:gap-10 justify-center">
           {faqAccordionInfo.map((accordion) => (
             <FAQAccordion
               key={accordion.question}
@@ -43,11 +43,11 @@ const FAQAccordion = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex flex-col rounded-xl px-[50px] py-10 shadow-2xl w-full gap-5">
-      <div className="flex justify-between items-center gap-5">
-        <p className="text-xl font-bold truncate">{question}</p>
+    <div className="flex flex-col rounded-lg px-4 sm:px-6 py-6 shadow-md w-full gap-4 bg-white">
+      <div className="flex justify-between items-center">
+        <p className="text-base sm:text-lg font-bold truncate">{question}</p>
         <button
-          className="rounded-full shadow-lg transition"
+          className="rounded-full shadow-lg p-2 transition transform hover:scale-105"
           onClick={() => {
             setIsOpen(!isOpen);
           }}
@@ -55,21 +55,21 @@ const FAQAccordion = ({ question, answer }) => {
           <svg
             className={`transition transform ${isOpen ? '' : '-rotate-90'}`}
             xmlns="http://www.w3.org/2000/svg"
-            width="51"
-            height="51"
-            viewBox="0 0 51 51"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
             fill="none"
           >
             <circle
               className="transition"
-              cx="25.6691"
-              cy="25.3309"
-              r="25.3309"
+              cx="12"
+              cy="12"
+              r="12"
               fill={!isOpen ? '#FFFFFF' : '#6F6C90'}
             />
             <path
               className="transition"
-              d="M17.4125 22.2212L25.6691 30.4405L33.9257 22.2212"
+              d="M8 10L12 14L16 10"
               stroke={!isOpen ? '#6F6C90' : '#FFFFFF'}
               strokeWidth="2"
               strokeLinecap="round"
@@ -78,7 +78,9 @@ const FAQAccordion = ({ question, answer }) => {
           </svg>
         </button>
       </div>
-      {isOpen && <p className="text-lg w-full text-left">{answer}</p>}
+      {isOpen && (
+        <p className="text-sm sm:text-base text-left leading-6">{answer}</p>
+      )}
     </div>
   );
 };

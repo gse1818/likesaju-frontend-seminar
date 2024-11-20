@@ -11,6 +11,9 @@ module.exports = {
     './**/@material-tailwind/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    screens: {
+      mobile: { max: '1024px' },
+    },
     extend: {
       colors: {
         primary: '#4A3AFF',
@@ -31,9 +34,14 @@ module.exports = {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
       animation: {
-        fadeIn: 'fadeIn 0.5s ease-in-out',
+        fadeInUp: 'fadeInUp 0.8s ease-out',
+        fadeIn: 'fadeIn 1s ease-out',
       },
     },
     fontFamily: {
