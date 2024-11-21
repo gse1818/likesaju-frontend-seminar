@@ -22,10 +22,13 @@ export const FAQSection = () => {
   ];
 
   return (
-    <SectionLayout>
+    <SectionLayout
+      outerLayerClassName={'mobile:h-fit'}
+      innerLayerClassName={'mobile:h-fit mobile:py-20'}
+    >
       <div className="w-full h-full flex flex-col gap-[80px]">
         <h3 className="text-left text-4xl nanum-extra-bold">FAQs</h3>
-        <div className="flex flex-col gap-[30px] justify-center">
+        <div className="flex flex-col mobile:gap-10 gap-[30px] justify-center">
           {faqAccordionInfo.map((accordion) => (
             <FAQAccordion
               key={accordion.question}
@@ -43,9 +46,11 @@ const FAQAccordion = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex flex-col rounded-xl px-[50px] py-10 shadow-2xl w-full gap-5">
-      <div className="flex justify-between items-center gap-5">
-        <p className="text-xl font-bold truncate">{question}</p>
+    <div className="flex flex-col rounded-xl px-[5vw] py-[5vh] shadow-2xl w-full gap-[0.5vh] m-0">
+      <div className="flex justify-between items-center gap-5 mobile:gap-2">
+        <p className="text-xl mobile:text-base font-bold mobile:line-clamp-2 mobile:whitespace-normal truncate">
+          {question}
+        </p>
         <button
           className="rounded-full shadow-lg transition"
           onClick={() => {
@@ -57,26 +62,16 @@ const FAQAccordion = ({ question, answer }) => {
               isOpen ? 'rotate-180' : 'rotate-0'
             }`}
             xmlns="http://www.w3.org/2000/svg"
-            width="51"
-            height="51"
-            viewBox="0 0 51 51"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
             fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <circle
-              className="transition"
-              cx="25.6691"
-              cy="25.3309"
-              r="25.3309"
-              fill={!isOpen ? '#FFFFFF' : '#6F6C90'}
-            />
-            <path
-              className="transition"
-              d="M17.4125 22.2212L25.6691 30.4405L33.9257 22.2212"
-              stroke={!isOpen ? '#6F6C90' : '#FFFFFF'}
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+            <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </button>
       </div>
@@ -85,7 +80,9 @@ const FAQAccordion = ({ question, answer }) => {
           isOpen ? 'max-h-screen' : 'max-h-0'
         }`}
       >
-        <p className="text-lg w-full text-left mt-4">{answer}</p>
+        <p className="text-lg mobile:text-sm w-full text-left mt-4 mobile:line-clamp-2 mobile:whitespace-normal">
+          {answer}
+        </p>
       </div>
     </div>
   );

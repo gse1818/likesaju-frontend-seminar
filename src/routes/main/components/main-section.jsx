@@ -19,6 +19,7 @@ export const MainSection = () => {
   const card3Ref = useRef(null);
   const card4Ref = useRef(null);
   const lionRef = useRef(null);
+  const textGroupRef = useRef(null); // 추가된 부분
 
   const maxScroll = window.innerHeight * 5;
 
@@ -27,7 +28,6 @@ export const MainSection = () => {
     interpolateDesignPosition(0);
 
     const handleScroll = () => {
-      /** 구체적인 스크롤 콜백 함수가 들어갈 예정 */
       interpolateBackground(window.scrollY);
       interpolateDesignPosition(window.scrollY);
     };
@@ -36,13 +36,9 @@ export const MainSection = () => {
   }, []);
 
   const interpolateBackground = (scrollY) => {
-    // 보간되는 값을 정할 factor 변수입니다.
-    // 0부터 window.innerHeight * 5까지 스크롤 함에 따라서 0부터 1까지 점진적으로 증가하겠죠?
-    const factor = Math.min(scrollY / maxScroll, 1); // 0 ~ 1 사이 값으로 제한
+    const factor = Math.min(scrollY / maxScroll, 1);
 
-    //ref의 경우, react의 lifecycle에서 관리되지 않는 값중 하나입니다. 꼭 존재하는지 체크해주는 습관을 들입시다.
     if (sectionRef.current) {
-      //gsap.to 함수 사용, sectionRef에 연결된 div의 background 속성을 변경
       gsap.to(sectionRef.current, {
         background: `linear-gradient(to bottom,
           ${gsap.utils.interpolate(GRADIENT_TOP_START_COLOR, GRADIENT_TOP_END_COLOR, factor)},
@@ -115,6 +111,17 @@ export const MainSection = () => {
         y: viewportYMiddle * 1.5 * (1 - factor2),
       });
     }
+
+    // 기본과제2: 텍스트 그룹 애니메이션
+    const factor3 = Math.max((scrollY - maxScroll / 2) / (maxScroll / 2), 0);
+
+    if (textGroupRef.current) {
+      gsap.to(textGroupRef.current, {
+        x: -200 * (1 - Math.min(factor3, 1)),
+        opacity: Math.min(factor3, 1),
+        ease: 'none',
+      });
+    }
   };
 
   return (
@@ -124,7 +131,10 @@ export const MainSection = () => {
       innerLayerRef={sectionRef}
     >
       <div className="relative flex flex-col w-full gap-8 items-start mobile:items-center">
-        <div className="flex flex-col items-start mobile:items-center gap-8">
+        <div
+          ref={textGroupRef}
+          className="flex flex-col items-start mobile:items-center gap-8"
+        >
           <h1 className="text-[64px] mobile:text-[32px] leading-normal whitespace-pre-wrap text-left mobile:text-center nanum-extra-bold text-black dark:text-white">
             <span>멋쟁이</span>{' '}
             <s className="text-gray-500 dark:text-gray-400">사자</s>
@@ -184,6 +194,14 @@ export const MainSection = () => {
             />
           </div>
         </div>
+        {/* 추가된 텍스트 그룹 */}
+        {/* <div
+          ref={textGroupRef}
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 opacity-0"
+        >
+          <h2 className="text-3xl font-bold">추가된 텍스트 그룹입니다.</h2>
+          <p>여기에 원하는 내용을 넣으세요.</p>
+        </div> */}
       </div>
     </SectionLayout>
   );

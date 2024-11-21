@@ -26,7 +26,10 @@ export const SajuSection = () => {
   ];
 
   return (
-    <SectionLayout>
+    <SectionLayout
+      outerLayerClassName={'mobile:h-fit'}
+      innerLayerClassName={'mobile:h-fit mobile:py-20'}
+    >
       <div className="w-full h-full flex flex-col gap-[80px]">
         <div className="w-full flex mobile:flex-col justify-between items-center mobile:gap-4">
           <div className="space-y-6 mobile:space-y-2">

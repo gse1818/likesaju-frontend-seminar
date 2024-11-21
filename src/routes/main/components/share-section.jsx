@@ -16,14 +16,17 @@ export const ShareSection = () => {
   ];
 
   return (
-    <SectionLayout>
+    <SectionLayout
+      outerLayerClassName={'mobile:h-fit'}
+      innerLayerClassName={'mobile:h-fit mobile:py-20'}
+    >
       <div className="w-full h-full flex flex-col gap-[80px]">
-        <div className="w-full flex justify-between items-center">
-          <div className="space-y-6">
-            <h3 className="text-left text-4xl nanum-extra-bold text-neutral-800">
+        <div className="w-full flex mobile:flex-col justify-between items-center">
+          <div className="space-y-6 mobile:space-y-2 mobile: pb-4">
+            <h3 className="text-left mobile:text-center text-4xl mobile:text-2xl nanum-extra-bold text-neutral-800">
               사주 공유하기
             </h3>
-            <p className="text-xl font-bold text-neutral-800">
+            <p className="text-xl mobile:text-sm font-bold text-neutral-800">
               채팅으로 사주를 공유해보세요
             </p>
           </div>
@@ -33,7 +36,7 @@ export const ShareSection = () => {
             </Button>
           </a>
         </div>
-        <div className="flex gap-10 justify-center">
+        <div className="flex mobile:flex-col mobile:items-center gap-10 justify-center">
           {shareCardInfo.map((card) => (
             <ShareCard
               key={card.title}
