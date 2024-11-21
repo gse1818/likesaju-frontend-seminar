@@ -48,7 +48,7 @@ const FAQAccordion = ({ question, answer }) => {
   return (
     <div className="flex flex-col rounded-xl px-[5vw] py-[5vh] shadow-2xl w-full gap-[0.5vh] m-0">
       <div className="flex justify-between items-center gap-5 mobile:gap-2">
-        <p className="text-xl mobile:text-base font-bold mobile:line-clamp-2 mobile:whitespace-normal truncate">
+        <p className="text-xl mobile:text-base font-bold mobile:line-clamp-2 mobile:whitespace-normal mobile:text-left truncate">
           {question}
         </p>
         <button
