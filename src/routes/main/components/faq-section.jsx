@@ -26,7 +26,7 @@ export const FAQSection = () => {
       outerLayerClassName={'mobile:h-fit'}
       innerLayerClassName={'mobile:h-fit mobile:py-20'}
     >
-      <div className="w-full h-full flex flex-col gap-[80px]">
+      <div className="w-full h-full flex flex-col mobile:items-center gap-[80px]">
         <h3 className="text-left text-4xl nanum-extra-bold">FAQs</h3>
         <div className="flex flex-col mobile:gap-10 gap-[30px] justify-center">
           {faqAccordionInfo.map((accordion) => (
