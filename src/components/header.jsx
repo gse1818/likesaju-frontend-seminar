@@ -53,19 +53,25 @@ export const Header = () => {
     }
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <div className="sticky top-0 w-full flex flex-row items-center justify-between mobile:justify-center bg-white drop-shadow h-[80px] px-[54px] mobile:px-[24px] z-[2000]">
+    <div className="sticky top-0 w-full flex flex-row items-center justify-between mobile:justify-center bg-white drop-shadow h-[80px] px-[54px] mobile:px-[24px] z-[1001]">
       {/* 모바일 로고 및 메뉴 */}
-      <div
-        className="w-full flex flex-row justify-between mobile:justify-center items-center h-full z-[2000]"
-        onMouseOver={() => setIsMenuOpen(true)} // hover 시 메뉴 열기
-      >
+      <div className="w-full flex flex-row justify-between items-center h-full z-[2000]">
         <Link
           to="/"
           className="text-[26px] mobile:text-[20px] font-extrabold text-[#14142B] leading-9 tracking-tighter"
         >
           멋쟁이 사주처럼
         </Link>
+
+        <div className="mobile:flex hidden" onClick={toggleMenu}>
+          <div className="text-lg font-bold cursor-pointer">메뉴</div>
+        </div>
+
         {/* 데스크톱 메뉴 */}
         <div className="flex flex-row items-center gap-[50px] mobile:hidden">
           <Link
@@ -147,12 +153,12 @@ export const Header = () => {
           )}
         </div>
         <div
-          className={`absolute top-[80px] left-0 w-full bg-white transition-all duration-300 overflow-hidden ${
+          className={`absolute top-[80px] left-0 w-full bg-white transition-all duration-300 overflow-hidden border-t-2 ${
             isMenuOpen ? 'max-h-[300px]' : 'max-h-0'
           }`}
           onMouseLeave={() => setIsMenuOpen(false)} // hover 벗어나면 메뉴 닫기
         >
-          <div className="hidden mobile:flex mobile:flex-col items-center gap-[50px] mobile:gap-[10px] px-4 py-2 z-[9999]">
+          <div className="hidden mobile:flex mobile:flex-col items-center gap-[50px] mobile:gap-[10px] px-4 py-2">
             <Link
               to="/saju"
               className={
